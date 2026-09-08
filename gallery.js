@@ -303,7 +303,7 @@ function createConfetti() {
         piece.style.transition =
             "transform 3s ease, opacity 3s ease";
 
-        document.body.appendChild(
+        container.appendChild(
             piece
         );
 
