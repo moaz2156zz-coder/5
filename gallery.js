@@ -26,10 +26,9 @@ const memoryText =
 const clockSymbol =
     document.getElementById("clockSymbol");
 
-
  const nextPageBtn =
     document.getElementById("nextPageBtn");
-
+/* =========================
    CREATE STARS
 ========================= */
 
@@ -174,10 +173,8 @@ function showMemory() {
         createExplosion();
 
  nextPageBtn.style.display = "flex";
-
         return;
     }
-   
     const memory = memories[memoryIndex];
 
     memoryNumber.textContent =
