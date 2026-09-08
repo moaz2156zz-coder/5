@@ -158,50 +158,50 @@ startButton.onclick = () => {
 
 function showMemory() {
 
-    if (
-        memoryIndex >= memories.length
-    ) {
+ if (memoryIndex >= memories.length) {
 
-  
-    memoryText.textContent =
-        memory.text;
+        memoryNumber.textContent = "∞";
 
+        memoryTitle.textContent = "بعض اللحظات تستاهل للأبد ❤️";
+
+        memoryText.textContent = "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
+
+        startButton.textContent = "الرحلة انتهت ✨";
+
+        clockSymbol.textContent = "∞";
+
+        createExplosion();
+
+        return;
+    }
+
+    const memory = memories[memoryIndex];
+
+    memoryNumber.textContent =
+        String(memoryIndex + 1)
+        .padStart(2, "0");
+
+    // إعادة تشغيل الأنيميشن
+    memoryTitle.style.animation = "none";
+
+    memoryText.style.animation = "none";
+
+    void memoryTitle.offsetWidth;
+
+    memoryTitle.style.animation = "fadeText .8s ease";
+
+    memoryText.style.animation = "fadeText .8s ease";
+
+    memoryTitle.textContent = memory.title;
+
+    memoryText.textContent = memory.text;
 
     clockSymbol.textContent =
-        memoryIndex % 2 === 0
-            ? "✦"
-            : "∞";
-function showMemory() {
-    if (memoryIndex >= memories.length) {
-        memoryNumber.textContent = "∞";
-        memoryTitle.textContent = "بعض اللحظات تستاهل للأبد ❤️";
-        memoryText.textContent = "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
-        startButton.textContent = "الرحلة انتهت ✨";
-        clockSymbol.textContent = "∞";
-        createExplosion();
-        return; // ✅ هذا بيوقف الدالة هنا
-    }
-    
-    // باقي الكود...
-}
+        memoryIndex % 2 === 0 ? "✦" : "∞";
 
     createExplosion();
 
-
     memoryIndex++;
-
-
-    setTimeout(() => {
-
-        showMemory();
-
-    }, 2300);
-
-}
-
-
-/* =========================
-   PARTICLE EXPLOSION
 ========================= */
 
 function createExplosion() {
