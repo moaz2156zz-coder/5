@@ -26,8 +26,9 @@ const memoryText =
 const clockSymbol =
     document.getElementById("clockSymbol");
 
+ const nextPageBtn =
+    document.getElementById("nextPageBtn");
 
-/* =========================
    CREATE STARS
 ========================= */
 
@@ -173,7 +174,8 @@ function showMemory() {
 
         return;
     }
-
+ nextPageBtn.style.display = "flex";
+   
     const memory = memories[memoryIndex];
 
     memoryNumber.textContent =
@@ -212,43 +214,43 @@ function showMemory() {
 
 
 /* =========================
-   PARTICLE EXPLOSION
+
+/* =========================
+   NEXT PAGE BUTTON
 ========================= */
 
-function createExplosion() {
+nextPageBtn.addEventListener('click', () => {
 
-    const symbols = [
-        "✦",
-        "✧",
-        "✨",
-        "·",
-        "♡"
-    ];
+    nextPageBtn.style.pointerEvents = 'none';
 
-    for (let i = 0; i < 18; i++) {
+    document.body.style.overflow = 'hidden';
 
-        const particle =
-            document.createElement("span");
+    // أنيميشن الانتقال
+    const pageTransition = document.createElement('div');
 
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
+    pageTransition.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            45deg,
+            #ff6b9d,
+            #c44569
+        );
+        z-index: 9999;
+        animation: pageSlideOut 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    `;
 
-        particle.style.position =
-            "fixed";
+    document.body.appendChild(pageTransition);
 
-        particle.style.left =
-            "50%";
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 800);
 
-        particle.style.top =
-            "48%";
+});
 
-        particle.style.zIndex =
-            "20";
 
         particle.style.pointerEvents =
             "none";
@@ -343,6 +345,20 @@ style.textContent = `
         transform:
             translateY(0)
             scale(1);
+    }
+
+}`;
+
+}
+
+@keyframes pageSlideOut {
+
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
     }
 
 }`;
