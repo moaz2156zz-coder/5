@@ -26,6 +26,7 @@ const memoryText =
 const clockSymbol =
     document.getElementById("clockSymbol");
 
+
  const nextPageBtn =
     document.getElementById("nextPageBtn");
 
@@ -172,9 +173,10 @@ function showMemory() {
 
         createExplosion();
 
+ nextPageBtn.style.display = "flex";
+
         return;
     }
- nextPageBtn.style.display = "flex";
    
     const memory = memories[memoryIndex];
 
@@ -214,8 +216,6 @@ function showMemory() {
 
 
 /* =========================
-
-/* =========================
    NEXT PAGE BUTTON
 ========================= */
 
@@ -252,45 +252,46 @@ nextPageBtn.addEventListener('click', () => {
 });
 
 
-        particle.style.pointerEvents =
-            "none";
+       
+/* =========================
+   PARTICLE EXPLOSION
+========================= */
 
-        particle.style.color =
-            "white";
+function createExplosion() {
 
-        particle.style.textShadow =
-            "0 0 12px #a99cff";
+    const symbols = [
+        "✦",
+        "✧",
+        "✨",
+        "·",
+        "♡"
+    ];
 
-        document.body.appendChild(
-            particle
-        );
+    for (let i = 0; i < 18; i++) {
 
+        const particle =
+            document.createElement("span");
 
-        const x =
-            (Math.random() - .5) * 350;
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
 
-        const y =
-            (Math.random() - .5) * 350;
+        particle.style.position =
+            "fixed";
 
+        particle.style.left =
+            "50%";
 
-        particle.animate(
+        particle.style.top =
+            "48%";
 
-            [
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(0)",
-                    opacity: 0
-                },
+        particle.style.zIndex =
+            "20";
 
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(1)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `translate(
                             calc(-50% + ${x}px),
                             calc(-50% + ${y}px)
                         )
