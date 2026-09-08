@@ -1,400 +1,379 @@
-function initGallery() {
+```javascript
+/* =========================
+   GALLERY / TIME MACHINE
+========================= */
 
-    const screens = {
+const stars =
+    document.getElementById("stars");
 
-        start:
-            document.getElementById(
-                "startScreen"
-            ),
+const startButton =
+    document.getElementById("startTime");
 
-        countdown:
-            document.getElementById(
-                "countdownScreen"
-            ),
+const counter =
+    document.getElementById("counter");
 
-        moment:
-            document.getElementById(
-                "momentScreen"
-            ),
+const memoryBox =
+    document.getElementById("memoryBox");
 
-        journey:
-            document.getElementById(
-                "journeyScreen"
-            ),
+const memoryNumber =
+    document.getElementById("memoryNumber");
 
-        cake:
-            document.getElementById(
-                "cakeScreen"
-            ),
+const memoryTitle =
+    document.getElementById("memoryTitle");
 
-        final:
-            document.getElementById(
-                "finalScreen"
-            )
+const memoryText =
+    document.getElementById("memoryText");
 
-    };
+const clockSymbol =
+    document.getElementById("clockSymbol");
 
 
-    function showScreen(screen) {
+/* =========================
+   CREATE STARS
+========================= */
 
-        Object.values(screens)
-            .forEach(element => {
+for (let i = 0; i < 130; i++) {
 
-                if (!element) return;
+    const star =
+        document.createElement("span");
 
-                element.classList.remove(
-                    "active"
-                );
+    star.className = "star";
 
-            });
+    star.style.left =
+        Math.random() * 100 + "%";
 
-        if (screen) screen.classList.add("active");
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    const size =
+        Math.random() * 3 + 1;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+    star.style.animationDuration =
+        `${5 + Math.random() * 10}s,
+         ${1 + Math.random() * 3}s`;
+
+    star.style.animationDelay =
+        `${Math.random() * 5}s`;
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   MEMORIES
+========================= */
+
+const memories = [
+
+    {
+        title: "أول لحظة ✦",
+        text: "بعض البدايات الصغيرة بتفتح أبواب لحاجات جميلة جدًا."
+    },
+
+    {
+        title: "لحظة ضحكة ❤️",
+        text: "في ضحكات بسيطة بتفضل عالقة في الذاكرة مهما الوقت عدى."
+    },
+
+    {
+        title: "تفصيلة صغيرة ✨",
+        text: "أوقات أجمل الذكريات بتكون في تفاصيل محدش خد باله منها."
+    },
+
+    {
+        title: "اللحظة الحالية 🌙",
+        text: "يمكن أحلى حاجة إننا لسه بنضيف لحظات جديدة للذكرى."
+    },
+
+    {
+        title: "ولو الزمن رجع...",
+        text: "هختار أعيش اللحظات الحلوة من جديد بدون تردد ❤️"
     }
 
-
-    // بداية الرحلة
-
-    const startBtn = document.getElementById("startBtn");
-    if (startBtn) {
-        startBtn.addEventListener(
-            "click",
-            startJourney
-        );
-    }
+];
 
 
-    function startJourney() {
-
-        showScreen(
-            screens.countdown
-        );
-
-        const counter =
-            document.getElementById(
-                "counter"
-            );
-
-        const counterText =
-            document.getElementById(
-                "counterText"
-            );
-
-        let number = 3;
-
-        if (counter) counter.textContent =
-            "03";
-
-        if (counterText) counterText.textContent =
-            "استعد...";
-
-        const timer =
-            setInterval(() => {
-
-                number--;
-
-                if (number > 0) {
-
-                    if (counter) counter.textContent =
-                        "0" + number;
-
-                    if (counterText) counterText.textContent =
-                        number === 2
-                            ? "الزمن بيتحرك..."
-                            : "اقتربنا...";
-
-                }
-
-                else {
-
-                    clearInterval(timer);
-
-                    if (counter) counter.textContent =
-                        "00";
-
-                    if (counterText) counterText.textContent =
-                        "وصلنا!";
-
-                    setTimeout(() => {
-
-                        showScreen(
-                            screens.moment
-                        );
-
-                    }, 900);
-
-                }
-
-            }, 1000);
-
-    }
+let memoryIndex = 0;
+let started = false;
 
 
-    // استمرار الرحلة
+/* =========================
+   START
+========================= */
 
-    const continueBtn = document.getElementById("continueBtn");
-    if (continueBtn) {
-        continueBtn.addEventListener(
-            "click",
-            () => {
+startButton.onclick = () => {
 
-                showScreen(
-                    screens.journey
-                );
+    if (started) return;
+
+    started = true;
+
+    startButton.disabled = true;
+
+    startButton.textContent =
+        "الزمن بيتحرك... ⏳";
+
+    let count = 3;
+
+    counter.textContent =
+        "0" + count;
+
+
+    const countdown =
+        setInterval(() => {
+
+            count--;
+
+            if (count > 0) {
+
+                counter.textContent =
+                    "0" + count;
+
+            } else {
+
+                clearInterval(countdown);
+
+                counter.textContent =
+                    "✦";
+
+                memoryBox.classList.add("show");
+
+                showMemory();
 
             }
-        );
+
+        }, 800);
+
+};
+
+
+/* =========================
+   SHOW MEMORY
+========================= */
+
+function showMemory() {
+
+    if (
+        memoryIndex >= memories.length
+    ) {
+
+        memoryNumber.textContent =
+            "∞";
+
+        memoryTitle.textContent =
+            "بعض اللحظات تستاهل للأبد ❤️";
+
+        memoryText.textContent =
+            "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
+
+        startButton.textContent =
+            "الرحلة انتهت ✨";
+
+        clockSymbol.textContent =
+            "∞";
+
+        createExplosion();
+
+        return;
     }
 
 
-    // كروت الزمن
+    const memory =
+        memories[memoryIndex];
 
-    document
-        .querySelectorAll(".time-card")
-        .forEach(card => {
 
-            card.addEventListener(
-                "click",
-                () => {
+    memoryNumber.textContent =
+        String(memoryIndex + 1)
+        .padStart(2, "0");
 
-                    card.style.transform =
-                        "scale(.95)";
 
-                    setTimeout(() => {
+    // إعادة تشغيل الأنيميشن
 
-                        card.style.transform =
-                            "";
+    memoryTitle.style.animation =
+        "none";
 
-                    }, 150);
+    memoryText.style.animation =
+        "none";
 
+    void memoryTitle.offsetWidth;
+
+
+    memoryTitle.style.animation =
+        "fadeText .8s ease";
+
+    memoryText.style.animation =
+        "fadeText .8s ease";
+
+
+    memoryTitle.textContent =
+        memory.title;
+
+    memoryText.textContent =
+        memory.text;
+
+
+    clockSymbol.textContent =
+        memoryIndex % 2 === 0
+            ? "✦"
+            : "∞";
+
+
+    createExplosion();
+
+
+    memoryIndex++;
+
+
+    setTimeout(() => {
+
+        showMemory();
+
+    }, 2300);
+
+}
+
+
+/* =========================
+   PARTICLE EXPLOSION
+========================= */
+
+function createExplosion() {
+
+    const symbols = [
+        "✦",
+        "✧",
+        "✨",
+        "·",
+        "♡"
+    ];
+
+
+    for (let i = 0; i < 18; i++) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.left =
+            "50%";
+
+        particle.style.top =
+            "48%";
+
+        particle.style.zIndex =
+            "20";
+
+        particle.style.pointerEvents =
+            "none";
+
+        particle.style.color =
+            "white";
+
+        particle.style.textShadow =
+            "0 0 12px #a99cff";
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        const x =
+            (Math.random() - .5) * 350;
+
+        const y =
+            (Math.random() - .5) * 350;
+
+
+        particle.animate(
+
+            [
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(0)",
+                    opacity: 0
+                },
+
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(1)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(
+                            calc(-50% + ${x}px),
+                            calc(-50% + ${y}px)
+                        )
+                        scale(0)`,
+                    opacity: 0
                 }
-     if (!candle) return;  // هذا الفحص غير ضروري هنا لأننا بالفعل في حلقة forEach
+            ],
 
-        });
+            {
+                duration:
+                    1300 +
+                    Math.random() * 700,
 
-
-    // الوصول للكيكة
-
-    const cakeBtn = document.getElementById("cakeBtn");
-    if (cakeBtn) {
-        cakeBtn.addEventListener(
-            "click",
-            () => {
-
-                showScreen(
-                    screens.cake
-                );
-
+                easing:
+                    "cubic-bezier(.2,.8,.2,1)"
             }
-        );
-    }
 
-
-    // الشموع
-
-    const candles =
-        document.querySelectorAll(
-            ".candle"
         );
 
-    let candlesOff = 0;
 
+        setTimeout(() => {
 
-    candles.forEach(candle => {
+            particle.remove();
 
-        candle.addEventListener(
-            "click",
-            function() {
+        }, 2300);
 
-                if (!candle) return;
-
-                if (
-                    candle.classList.contains(
-                        "off"
-                    )
-                ) {
-                    return;
-                }
-
-                candle.classList.add(
-                    "off"
-                );
-
-                candlesOff++;
-
-                const remaining =
-                    3 - candlesOff;
-
-                const counter =
-                    document.getElementById(
-                        "candleCounter"
-                    );
-
-                if (counter) {
-                    if (remaining > 0) {
-
-                        counter.textContent =
-                            `${remaining} شمعة لسه منورة`;
-
-                    }
-
-                    else {
-
-                        counter.textContent =
-                            "✨ الأمنية اتحققت ✨";
-
-                        const blowText = document.getElementById(
-                            "blowText"
-                        );
-                        if (blowText) blowText.textContent =
-                            "✨ الزمن وقف هنا ✨";
-
-                      setTimeout(() => {
-    const translateY = window.innerHeight + 100;
-    const rotate = Math.random() * 720;
-    
-    piece.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
-    piece.style.opacity = "0";
-
-                        setTimeout(() => {
-
-                            showScreen(
-                                screens.final
-                            );
-
-                            createConfetti();
-
-                        }, 1800);
-
-                    }
-                }
-
-            }
-        );
-
-    });
-
-
-    // الكونفيتي
-
-    function createConfetti() {
-
-        const container =
-            document.getElementById(
-                "confetti"
-            );
-
-        if (!container) return;
-
-        for (
-            let i = 0;
-            i < 80;
-            i++
-        ) {
-
-            const piece =
-                document.createElement(
-                    "span"
-                );
-
-            piece.textContent =
-                Math.random() > .5
-                    ? "❤️"
-                    : "✦";
-
-            piece.style.position =
-                "fixed";
-
-            piece.style.left =
-                Math.random() * 100 +
-                "vw";
-
-            piece.style.top =
-                "-20px";
-
-            piece.style.fontSize =
-                10 +
-                Math.random() * 20 +
-                "px";
-
-            piece.style.zIndex =
-                "999";
-
-            piece.style.transition =
-                "transform 3s ease, opacity 3s ease";
-
-            container.appendChild(
-                piece
-            );
-
-            setTimeout(() => {
-
-                const translateY = window.innerHeight + 100;
-                const rotate = Math.random() * 720;
-                
-                piece.style.transform =
-                    `translateY(${translateY}px) rotate(${rotate}deg)`;
-
-                piece.style.opacity =
-                    "0";
-
-            }, 50);
-
-            setTimeout(() => {
-
-                piece.remove();
-
-            }, 3200);
-
-        }
-
-    }
-
-
-    // إعادة التجربة
-
-    const restartBtn = document.getElementById("restartBtn");
-    if (restartBtn) {
-        restartBtn.addEventListener(
-            "click",
-            () => {
-
-                location.reload();
-
-            }
-        );
-    }
-
-    const nextPageBtn = document.getElementById("nextPageBtn");
-    if (nextPageBtn) {
-        nextPageBtn.addEventListener("click", () => {
-
-            const transition =
-                document.createElement("div");
-
-            transition.className =
-                "page-transition";
-
-            document.body.appendChild(
-                transition
-            );
-
-            requestAnimationFrame(() => {
-                transition.classList.add("active");
-            });
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "love.html";
-
-            }, 550);
-        });
     }
 
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGallery);
-} else {
-    initGallery();
-}
+
+/* =========================
+   TEXT ANIMATION
+========================= */
+
+const style =
+    document.createElement("style");
+
+style.textContent = `
+
+@keyframes fadeText {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px)
+            scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}`;
+
+document.head.appendChild(style);
+```
