@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     // =========================
     // الكتابة المتحركة
     // =========================
-
     const typing = document.getElementById("typing");
-
     const message = `النهارده مش يوم عادي.. ❤️
-
 النهارده يوم ميلاد أجمل جنجونتي.
 
 كل سنة وانتي طيبة،
@@ -29,10 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(typeWriter, 35);
         }
     }
-
     setTimeout(typeWriter, 800);
-
-
     // =========================
     // القلوب
     // =========================
@@ -76,11 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
         next.addEventListener("click", function () {
 
             transition.classList.add("active");
-
+            
             setTimeout(function () {
-
                 window.location.href = "gallery2.html";
-
             }, 800);
 
         });
