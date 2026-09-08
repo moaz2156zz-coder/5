@@ -292,41 +292,41 @@ function createExplosion() {
                     opacity: 0
                 }
             ],
+        particle.style.pointerEvents =
+            "none";
 
-            {
-                duration:
-                    1300 +
-                    Math.random() * 700,
+        particle.style.color =
+            "white";
 
-                easing:
-                    "cubic-bezier(.2,.8,.2,1)"
-            }
+        particle.style.textShadow =
+            "0 0 12px #a99cff";
 
-        );
+        document.body.appendChild(particle);
 
+        const x =
+            (Math.random() - .5) * 350;
 
-        setTimeout(() => {
+        const y =
+            (Math.random() - .5) * 350;
 
-            particle.remove();
+        particle.animate(
 
-        }, 2300);
+            [
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(0)",
+                    opacity: 0
+                },
 
-    }
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(1)",
+                    opacity: 1
+                },
 
-}
-
-
-/* =========================
-   TEXT ANIMATION
-========================= */
-
-const style =
-    document.createElement("style");
-
-style.textContent = `
-
-@keyframes fadeText {
-
+                {
+                    transform:
+                        `translate(
     from {
         opacity: 0;
         transform:
@@ -340,11 +340,8 @@ style.textContent = `
             translateY(0)
             scale(1);
     }
-
 }`;
-
 }
-
 @keyframes pageSlideOut {
 
     from {
