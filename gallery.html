@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
 
@@ -8,247 +10,117 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>i love you</title>
+    <title>آلة الزمن ❤️</title>
 
     <link rel="stylesheet" href="gallery.css">
 </head>
 
 <body>
 
-    <!-- الخلفية -->
+    <!-- النجوم -->
+    <div id="stars"></div>
 
-    <div class="background">
-        <div class="stars"></div>
-        <div class="glow"></div>
-    </div>
+    <!-- الإضاءة -->
+    <div class="ambient-light"></div>
 
+    <main class="time-page">
 
-    <!-- شاشة البداية -->
-
-    <main id="startScreen" class="screen active">
-
-        <div class="time-symbol">
-            ⏳
+        <div class="time-badge">
+            ✦
         </div>
 
-        <p class="system">
-            TIME MACHINE // SYSTEM READY
-        </p>
-        
-        <h2>
-            جاهزة يا حجة 
-        </h2>
-
-        <p class="intro">
-            هناك لحظة واحدة تستحق أن يتوقف عندها الزمن...
-        </p>
-
-        <button id="startBtn">
-            ابدأ الرحلة
-            <span>→</span>
-        </button>
-
-    </main>
-
-
-    <!-- العد التنازلي -->
-
-    <main id="countdownScreen" class="screen">
-
-        <p class="system">
-            TRAVELING THROUGH TIME
-        </p>
-
-        <div id="counter">
-            03
-        </div>
-
-        <p id="counterText">
-            استعد...
-        </p>
-
-    </main>
-
-
-    <!-- شاشة اللحظة -->
-
-    <main id="momentScreen" class="screen">
-
-        <div class="moment-circle">
-
-            <div class="orbit"></div>
-
-            <span>
-                ✦
-            </span>
-
-        </div>
-
-        <p class="system">
-            TIME REACHED
-        </p>
-
-        <h2>
-            وصلنا للحظة المميزة ✨
-            </h2>
-
-        <p>
-            بس الرحلة لسه مخلصتش...
-        </p>
-
-        <button id="continueBtn">
-            كمّل الرحلة
-        </button>
-
-    </main>
-
-
-    <!-- شاشة المراحل -->
-
-    <main id="journeyScreen" class="screen">
-
-        <p class="system">
-            TIMELINE UNLOCKED
-        </p>
-
-        <h2>
-            رحلة عبر الزمن
-        </h2>
-
-        <div class="timeline">
-
-            <button class="time-card">
-                <span>9/6/2026</span>
-                البداية
-            </button>
-
-            <button class="time-card">
-                <span>15/6/2026</span>
-                اللحظة المميزة
-            </button>
-
-            <button class="time-card">
-                <span>18/9</span>
-              اليوم
-            </button>
-
-            <button class="time-card">
-                <span>احلى دكتورة </span>
-                المستقبل
-            </button>
-
-        </div>
-
-        <button id="cakeBtn">
-            الوصول إلى النهاية 🎂
-        </button>
-
-    </main>
-
-
-    <!-- الكيك -->
-
-    <main id="cakeScreen" class="screen">
-
-        <p class="system">
-            FINAL MOMENT
-        </p>
-
-        <h2>
-            الوقت واقف هنا...
-        </h2>
-
-        <p class="instruction">
-            دلوقتي دورك 🕯️
-        </p>
-
-
-        <div class="cake">
-
-            <div
-                class="candle"
-                data-candle="1"
-            >
-                <div class="flame"></div>
-            </div>
-
-            <div
-                class="candle"
-                data-candle="2"
-            >
-                <div class="flame"></div>
-            </div>
-
-            <div
-                class="candle"
-                data-candle="3"
-            >
-                <div class="flame"></div>
-            </div>
-
-            <div class="cream"></div>
-
-            <div class="cake-body"></div>
-
-            <div class="plate"></div>
-
-        </div>
-
-
-        <h3 id="blowText">
-            🕯️ طفي الشمع 🕯️
-        </h3>
-
-        <p id="candleCounter">
-            3 شموع لسه منورة
-        </p>
-
-    </main>
-
-
-    <!-- النهاية -->
-
-    <main id="finalScreen" class="screen">
-
-        <div class="final-clock">
-            00:00:00
-        </div>
-
-        <p class="system">
-            TIME PAUSED
-        </p>
-
-        <div class="final-symbol">
-            ❤️
-        </div>
+        <span class="mini-title">
+            A MOMENT IN TIME
+        </span>
 
         <h1>
-            كل سنة وإنتِ طيبة
-            <span>
-                يا جنجونتي
-            </span>
+            آلة الزمن
         </h1>
 
-        <p>
-            الزمن وقف للحظة...
+        <p class="intro">
+            لو كان ممكن نرجع بالوقت...
             <br>
-            عشان اللحظة دي تستحق تتعاش ❤️
+            يا ترى هنختار نعيش أنهي لحظة تاني؟ ❤️
         </p>
 
-        <div class="confetti" id="confetti"></div>
 
-<button id="restartBtn">
-    ↻ عيش اللحظة تاني
-</button>
+        <!-- الساعة -->
+        <div class="time-machine">
 
-<button id="nextPageBtn">
-    ✨ الفصل التالي
-</button>
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+
+            <div class="clock">
+
+                <div class="clock-inner">
+                    <span id="clockSymbol">✦</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- العد التنازلي -->
+
+        <div class="countdown">
+
+            <span id="counter">
+                03
+            </span>
+
+        </div>
+
+
+        <button
+            id="startTime"
+            class="time-button"
+        >
+            ارجعي الزمن ✨
+        </button>
+
+
+        <!-- الذكريات -->
+
+        <section
+            id="memoryBox"
+            class="memory-box"
+        >
+
+            <div class="memory-line"></div>
+
+            <span class="memory-number">
+                MEMORY <b id="memoryNumber">01</b>
+            </span>
+
+            <h2 id="memoryTitle">
+                لحظة...
+            </h2>
+
+            <p id="memoryText">
+                الزمن لسه بيبدأ ❤️
+            </p>
+
+            <div class="memory-symbol">
+                ∞
+            </div>
+
+        </section>
+
+
+        <a
+            href="index.html"
+            class="back-button"
+        >
+            ← الرجوع للصفحة الرئيسية
+        </a>
 
     </main>
 
 
-    <script src="/gallery.js"></script>
+    <script src="gallery.js"></script>
 
 </body>
 </html>
+```
