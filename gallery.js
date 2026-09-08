@@ -203,7 +203,7 @@ function initGallery() {
 
         candle.addEventListener(
             "click",
-            () => {
+            function() {
 
                 if (!candle) return;
 
@@ -323,9 +323,11 @@ function initGallery() {
 
             setTimeout(() => {
 
+                const translateY = window.innerHeight + 100;
+                const rotate = Math.random() * 720;
+                
                 piece.style.transform =
-                    `translateY(${window.innerHeight + 100}px)
-                    rotate(${Math.random() * 720}deg)`;
+                    `translateY(${translateY}px) rotate(${rotate}deg)`;
 
                 piece.style.opacity =
                     "0";
