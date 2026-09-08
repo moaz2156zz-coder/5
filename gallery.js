@@ -162,57 +162,7 @@ function showMemory() {
         memoryIndex >= memories.length
     ) {
 
-        memoryNumber.textContent =
-            "∞";
-
-        memoryTitle.textContent =
-            "بعض اللحظات تستاهل للأبد ❤️";
-
-        memoryText.textContent =
-            "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
-
-        startButton.textContent =
-            "الرحلة انتهت ✨";
-
-        clockSymbol.textContent =
-            "∞";
-
-        createExplosion();
-
-        return;
-    }
-
-
-    const memory =
-        memories[memoryIndex];
-
-
-    memoryNumber.textContent =
-        String(memoryIndex + 1)
-        .padStart(2, "0");
-
-
-    // إعادة تشغيل الأنيميشن
-
-    memoryTitle.style.animation =
-        "none";
-
-    memoryText.style.animation =
-        "none";
-
-    void memoryTitle.offsetWidth;
-
-
-    memoryTitle.style.animation =
-        "fadeText .8s ease";
-
-    memoryText.style.animation =
-        "fadeText .8s ease";
-
-
-    memoryTitle.textContent =
-        memory.title;
-
+  
     memoryText.textContent =
         memory.text;
 
