@@ -213,6 +213,18 @@ function showMemory() {
 
 /* =========================
    PARTICLE EXPLOSION
+========================= */
+
+function createExplosion() {
+
+    const symbols = [
+        "✦",
+        "✧",
+        "✨",
+        "·",
+        "♡"
+    ];
+
     for (let i = 0; i < 18; i++) {
 
         const particle =
