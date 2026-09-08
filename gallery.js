@@ -1,4 +1,12 @@
-const message = `النهارده مش يوم عادي.. ❤️
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =========================
+    // الكتابة المتحركة
+    // =========================
+
+    const typing = document.getElementById("typing");
+
+    const message = `النهارده مش يوم عادي.. ❤️
 
 النهارده يوم ميلاد أجمل جنجونتي.
 
@@ -8,89 +16,78 @@ const message = `النهارده مش يوم عادي.. ❤️
 أتمنى السنة الجديدة من عمرك
 تكون مليانة فرحة وسعادة ونجاح.
 
-وأتمنى دايمًا أشوفك مبسوطة،
-لأن ابتسامتك بتخلي كل حاجة أجمل. ❤️
-
 عيد ميلاد سعيد يا جنجونتي 😍
 وعقبال سنين كتير كلها فرحة وحب. ❤️`;
 
-const typing = document.getElementById("typing");
+    let i = 0;
 
-let i = 0;
+    function typeWriter() {
+        if (i < message.length) {
+            typing.textContent += message.charAt(i);
+            i++;
 
-function typeWriter() {
-
-    if (i < message.length) {
-
-        typing.textContent += message[i];
-
-        i++;
-
-        let speed = 35;
-
-        if (message[i - 1] === "\n") {
-            speed = 250;
+            setTimeout(typeWriter, 35);
         }
-
-        setTimeout(typeWriter, speed);
     }
-}
 
-setTimeout(typeWriter, 1000);
-
-
-/* القلوب */
-
-const hearts = document.querySelector(".hearts");
-
-function createHeart() {
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    heart.textContent = "♥";
-
-    const size = Math.random() * 35 + 15;
-    const duration = Math.random() * 7 + 7;
-
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.fontSize = size + "px";
-    heart.style.animationDuration = duration + "s";
-    heart.style.opacity = Math.random() * .6 + .3;
-
-    hearts.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, duration * 1000);
-}
+    setTimeout(typeWriter, 800);
 
 
-/* قلوب البداية */
+    // =========================
+    // القلوب
+    // =========================
 
-for (let x = 0; x < 25; x++) {
+    const hearts = document.querySelector(".hearts");
 
-    setTimeout(createHeart, x * 200);
+    function createHeart() {
 
-}
+        const heart = document.createElement("div");
 
-setInterval(createHeart, 500);
+        heart.className = "heart";
+        heart.innerHTML = "♥";
+
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.fontSize =
+            Math.random() * 30 + 15 + "px";
+
+        heart.style.animationDuration =
+            Math.random() * 5 + 6 + "s";
+
+        hearts.appendChild(heart);
+
+        setTimeout(function () {
+            heart.remove();
+        }, 12000);
+    }
+
+    for (let i = 0; i < 20; i++) {
+        createHeart();
+    }
+
+    setInterval(createHeart, 500);
 
 
-/* زر الانتقال */
+    // =========================
+    // زر الانتقال
+    // =========================
 
-const next = document.getElementById("next");
-const transition = document.querySelector(".transition");
+    const next = document.getElementById("next");
+    const transition = document.querySelector(".transition");
 
-next.addEventListener("click", () => {
+    if (next && transition) {
 
-    transition.classList.add("active");
+        next.addEventListener("click", function () {
 
-    setTimeout(() => {
+            transition.classList.add("active");
 
-        window.location.href = "MESSAGE.html";
+            setTimeout(function () {
 
-    }, 850);
+                window.location.href = "gallery2.html";
+
+            }, 800);
+
+        });
+
+    }
 
 });
