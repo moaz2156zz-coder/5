@@ -614,7 +614,7 @@ h1 {
 
 
 /* =========================
-    NEXT PAGE BUTTON
+   NEXT PAGE BUTTON
 ========================= */
 
 .next-page-button {
@@ -633,8 +633,8 @@ h1 {
 
     font-weight: bold;
     
-   cursor: pointer;
-
+    cursor: pointer;
+    
     background: linear-gradient(
         135deg,
         #ff6b9d,
@@ -745,11 +745,13 @@ h1 {
 
     .time-machine {
         margin-top: 35px;
-}
- .next-page-button {
+    }
+
+    .next-page-button {
         margin-top: 40px;
 
         padding: 12px 25px;
 
         font-size: 13px;
     }
+
