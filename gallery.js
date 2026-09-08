@@ -1,357 +1,110 @@
 /* =========================
-   GALLERY / TIME MACHINE
+   الكتابة حرف حرف
 ========================= */
 
-const stars =
-    document.getElementById("stars");
+const text = `
+النهارده مش يوم عادي.. ❤️
+النهارده اليوم اللي اتولدت فيه أجمل إنسانة بالنسبة ليا.
 
-const startButton =
-    document.getElementById("startTime");
+كل سنة وانتي طيبة يا جنجونتي،
+وكل سنة وضحكتك منورة الدنيا حواليكي. ✨
 
-const counter =
-    document.getElementById("counter");
+أتمنى السنة الجديدة من عمرك تكون مليانة
+فرحة ونجاح وأيام حلوة كتير.
 
-const memoryBox =
-    document.getElementById("memoryBox");
+وأتمنى دايمًا تفضلي مبسوطة،
+لأن ابتسامتك لوحدها كفاية تخلي اليوم أجمل. ❤️
 
-const memoryNumber =
-    document.getElementById("memoryNumber");
+عيد ميلاد سعيد يا جنجونتي 😍
+وعقبال سنين كتير كلها فرحة وحب. ❤️
+`;
 
-const memoryTitle =
-    document.getElementById("memoryTitle");
+const typingText = document.getElementById("typingText");
 
-const memoryText =
-    document.getElementById("memoryText");
+let index = 0;
 
-const clockSymbol =
-    document.getElementById("clockSymbol");
- const nextPageBtn =
-    document.getElementById("nextPageBtn");
-/* =========================
-   CREATE STARS
-========================= */
-for (let i = 0; i < 130; i++) {
+function typeWriter() {
 
-    const star =
-        document.createElement("span");
+    if (index < text.length) {
 
-    star.className = "star";
+        typingText.textContent += text.charAt(index);
 
-    star.style.left =
-        Math.random() * 100 + "%";
+        index++;
 
-    star.style.top =
-        Math.random() * 100 + "%";
+        let speed = 35;
 
-    const size =
-        Math.random() * 3 + 1;
+        if (text.charAt(index - 1) === "\n") {
+            speed = 300;
+        }
 
-    star.style.width =
-        size + "px";
-
-    star.style.height =
-        size + "px";
-
-    star.style.animationDuration =
-        `${5 + Math.random() * 10}s,
-         ${1 + Math.random() * 3}s`;
-
-    star.style.animationDelay =
-        `${Math.random() * 5}s`;
-
-    stars.appendChild(star);
+        setTimeout(typeWriter, speed);
+    }
 }
 
-
-/* =========================
-   MEMORIES
-========================= */
-
-const memories = [
-
-    {
-        title: "أول لحظة ✦",
-        text: "بعض البدايات الصغيرة بتفتح أبواب لحاجات جميلة جدًا."
-    },
-
-    {
-        title: "لحظة ضحكة ❤️",
-        text: "في ضحكات بسيطة بتفضل عالقة في الذاكرة مهما الوقت عدى."
-    },
-
-    {
-        title: "تفصيلة صغيرة ✨",
-        text: "أوقات أجمل الذكريات بتكون في تفاصيل محدش خد باله منها."
-    },
-
-    {
-        title: "اللحظة الحالية 🌙",
-        text: "يمكن أحلى حاجة إننا لسه بنضيف لحظات جديدة للذكرى."
-    },
-
-    {
-        title: "ولو الزمن رجع...",
-        text: "هختار أعيش اللحظات الحلوة من جديد بدون تردد ❤️"
-    }
-
-];
-
-
-let memoryIndex = 0;
-let started = false;
+setTimeout(typeWriter, 1200);
 
 
 /* =========================
-   START
+   إنشاء القلوب
 ========================= */
 
-startButton.onclick = () => {
+const heartsContainer = document.querySelector(".hearts");
 
-    if (started) return;
+function createHeart() {
 
-    started = true;
+    const heart = document.createElement("div");
 
-    startButton.disabled = true;
+    heart.classList.add("heart");
 
-    startButton.textContent =
-        "الزمن بيتحرك... ⏳";
+    heart.innerHTML = "♥";
 
-    let count = 3;
+    const size = Math.random() * 35 + 15;
 
-    counter.textContent =
-        "0" + count;
+    const duration = Math.random() * 8 + 8;
 
+    const delay = Math.random() * 8;
 
-    const countdown =
-        setInterval(() => {
+    const opacity = Math.random() * .55 + .25;
 
-            count--;
+    heart.style.left = Math.random() * 100 + "%";
 
-            if (count > 0) {
+    heart.style.setProperty("--size", size + "px");
+    heart.style.setProperty("--duration", duration + "s");
+    heart.style.setProperty("--delay", delay + "s");
+    heart.style.setProperty("--opacity", opacity);
 
-                counter.textContent =
-                    "0" + count;
+    heartsContainer.appendChild(heart);
 
-            } else {
+    setTimeout(() => {
+        heart.remove();
+    }, (duration + delay) * 1000);
+}
 
-                clearInterval(countdown);
+for (let i = 0; i < 30; i++) {
+    createHeart();
+}
 
-                counter.textContent =
-                    "✦";
-
-                memoryBox.classList.add("show");
-
-                showMemory();
-
-            }
-
-        }, 800);
-
-};
+setInterval(createHeart, 500);
 
 
 /* =========================
-   SHOW MEMORY
+   زر الانتقال
 ========================= */
 
-function showMemory() {
+function goNext() {
 
-    if (memoryIndex >= memories.length) {
+    const transition = document.querySelector(".transition-screen");
 
-        memoryNumber.textContent = "∞";
-
-        memoryTitle.textContent = "بعض اللحظات تستاهل للأبد ❤️";
-
-        memoryText.textContent = "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
-
-        startButton.textContent = "الرحلة انتهت ✨";
-
-        clockSymbol.textContent = "∞";
-
-        createExplosion();
-
- nextPageBtn.style.display = "flex";
-        return; }
-    const memory = memories[memoryIndex];
-    memoryNumber.textContent =
-        String(memoryIndex + 1)
-        .padStart(2, "0");
-
-    // إعادة تشغيل الأنيميشن
-    memoryTitle.style.animation = "none";
-
-    memoryText.style.animation = "none";
-
-    void memoryTitle.offsetWidth;
-
-    memoryTitle.style.animation = "fadeText .8s ease";
-
-    memoryText.style.animation = "fadeText .8s ease";
-
-    memoryTitle.textContent = memory.title;
-
-    memoryText.textContent = memory.text;
-
-    clockSymbol.textContent =
-        memoryIndex % 2 === 0 ? "✦" : "∞";
-
-    createExplosion();
-
-    memoryIndex++;
+    transition.classList.add("active");
 
     setTimeout(() => {
 
-        showMemory();
+        /*
+          غير اسم الصفحة هنا لو الصفحة التالية
+          عندك باسم مختلف
+        */
 
-    }, 2300);
+        window.location.href = "message.html";
 
+    }, 900);
 }
-
-
-/* =========================
-   NEXT PAGE BUTTON
-========================= */
-
-nextPageBtn.addEventListener('click', () => {
-
-    nextPageBtn.style.pointerEvents = 'none';
-
-    document.body.style.overflow = 'hidden';
-
-    // أنيميشن الانتقال
-    const pageTransition = document.createElement('div');
-
-    pageTransition.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            45deg,
-            #ff6b9d,
-            #c44569
-        );
-        z-index: 9999;
-        animation: pageSlideOut 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-    `;
-
-    document.body.appendChild(pageTransition);
-
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 800);
-
-});
-
-
-       
-/* =========================
-   PARTICLE EXPLOSION
-========================= */
-
-function createExplosion() {
-
-    const symbols = [
-        "✦",
-        "✧",
-        "✨",
-        "·",
-        "♡"
-    ];
-
-    for (let i = 0; i < 18; i++) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-        particle.style.position =
-            "fixed";
-
-        particle.style.left =
-            "50%";
-
-        particle.style.top =
-            "48%";
-
-        particle.style.zIndex =
-            "20";
-
-                            calc(-50% + ${x}px),
-                            calc(-50% + ${y}px)
-                        )
-                        scale(0)`,
-                    opacity: 0
-                }
-            ],
-        particle.style.pointerEvents =
-            "none";
-
-        particle.style.color =
-            "white";
-
-        particle.style.textShadow =
-            "0 0 12px #a99cff";
-
-        document.body.appendChild(particle);
-
-        const x =
-            (Math.random() - .5) * 350;
-
-        const y =
-            (Math.random() - .5) * 350;
-
-        particle.animate(
-
-            [
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(0)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(1)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `translate(
-    from {
-        opacity: 0;
-        transform:
-            translateY(15px)
-            scale(.95);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}`;
-}
-@keyframes pageSlideOut {
-
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-
-}`;
-
-document.head.appendChild(style);
