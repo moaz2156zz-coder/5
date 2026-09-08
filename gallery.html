@@ -1,127 +1,64 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>عيد ميلاد جنجونتي ❤️</title>
 
-    <title>آلة الزمن ❤️</title>
-
-    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- النجوم -->
-    <div id="stars"></div>
+    <!-- قلوب الخلفية -->
+    <div class="hearts"></div>
 
-    <!-- الإضاءة -->
-    <div class="ambient-light"></div>
+    <!-- اللمعات -->
+    <div class="sparkles"></div>
 
-    <main class="time-page">
+    <main class="birthday-page">
 
-        <div class="time-badge">
-            ✦
-        </div>
+        <div class="top-heart">♥</div>
 
-        <span class="mini-title">
-            A MOMENT IN TIME
-        </span>
+        <p class="small-title">إلى أجمل شخص في حياتي</p>
 
-        <h1>
-            آلة الزمن
+        <h1 class="title">
+            عيد ميلاد
+            <span>جنجونتي</span>
         </h1>
 
-        <p class="intro">
-            لو كان ممكن نرجع بالوقت...
-            <br>
-            يا ترى هنختار نعيش أنهي لحظة تاني؟ ❤️
-        </p>
+        <div class="line"></div>
 
+        <!-- النص المتحرك -->
+        <div class="message-box">
 
-        <!-- الساعة -->
-        <div class="time-machine">
+            <div class="heart-icon">♡</div>
 
-            <div class="orbit orbit-1"></div>
-            <div class="orbit orbit-2"></div>
-            <div class="orbit orbit-3"></div>
-
-            <div class="clock">
-
-                <div class="clock-inner">
-                    <span id="clockSymbol">✦</span>
-                </div>
-
-            </div>
+            <p id="typingText"></p>
 
         </div>
 
-
-        <!-- العد التنازلي -->
-
-        <div class="countdown">
-
-            <span id="counter">
-                03
-            </span>
-
+        <div class="love-text">
+            كل سنة وانتي أجمل حاجة في حياتي ❤️
         </div>
 
-
-        <button
-            id="startTime"
-            class="time-button"
-        >
-            ارجعي الزمن ✨
+        <!-- زر الانتقال -->
+        <button class="next-btn" onclick="goNext()">
+            <span>كمّلي معايا</span>
+            <b>❤️</b>
         </button>
 
-
-        <!-- الذكريات -->
-
-        <section
-            id="memoryBox"
-            class="memory-box"
-        >
-
-            <div class="memory-line"></div>
-
-            <span class="memory-number">
-                MEMORY <b id="memoryNumber">01</b>
-            </span>
-
-            <h2 id="memoryTitle">
-                لحظة...
-            </h2>
-
-            <p id="memoryText">
-                الزمن لسه بيبدأ ❤️
-            </p>
-
-            <div class="memory-symbol">
-                ∞
-            </div>
-
-        </section>
-
-
-        <button
-            id="nextPageBtn"
-            class="next-page-button"
-        >
-                <span class="btn-text">كملي يا مظة</span>
-            <span class="btn-icon">→</span>
-        </button>
-
-
+        <p class="hint">اضغطي هنا عشان نكمل الحكاية ✨</p>
 
     </main>
 
+    <!-- شاشة الانتقال -->
+    <div class="transition-screen">
+        <div class="transition-heart">❤️</div>
+    </div>
 
-    <script src="gallery.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
