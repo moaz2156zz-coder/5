@@ -89,7 +89,7 @@ next.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        window.location.href = "gallery2.html";
+        window.location.href = "MESSAGE.html";
 
     }, 850);
 
