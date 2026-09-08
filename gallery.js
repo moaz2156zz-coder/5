@@ -221,7 +221,19 @@ function showMemory() {
         memoryIndex % 2 === 0
             ? "✦"
             : "∞";
-
+function showMemory() {
+    if (memoryIndex >= memories.length) {
+        memoryNumber.textContent = "∞";
+        memoryTitle.textContent = "بعض اللحظات تستاهل للأبد ❤️";
+        memoryText.textContent = "ومهما الوقت عدى، تفضل الذكرى الحلوة هي أجمل حاجة.";
+        startButton.textContent = "الرحلة انتهت ✨";
+        clockSymbol.textContent = "∞";
+        createExplosion();
+        return; // ✅ هذا بيوقف الدالة هنا
+    }
+    
+    // باقي الكود...
+}
 
     createExplosion();
 
