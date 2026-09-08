@@ -1,164 +1,267 @@
-const screens = {
+function initGallery() {
 
-    start:
-        document.getElementById(
-            "startScreen"
-        ),
+    const screens = {
 
-    countdown:
-        document.getElementById(
-            "countdownScreen"
-        ),
+        start:
+            document.getElementById(
+                "startScreen"
+            ),
 
-    moment:
-        document.getElementById(
-            "momentScreen"
-        ),
+        countdown:
+            document.getElementById(
+                "countdownScreen"
+            ),
 
-    journey:
-        document.getElementById(
-            "journeyScreen"
-        ),
+        moment:
+            document.getElementById(
+                "momentScreen"
+            ),
 
-    cake:
-        document.getElementById(
-            "cakeScreen"
-        ),
+        journey:
+            document.getElementById(
+                "journeyScreen"
+            ),
 
-    final:
-        document.getElementById(
-            "finalScreen"
-        )
+        cake:
+            document.getElementById(
+                "cakeScreen"
+            ),
 
-};
+        final:
+            document.getElementById(
+                "finalScreen"
+            )
+
+    };
 
 
-function showScreen(screen) {
+    function showScreen(screen) {
 
-    Object.values(screens)
-        .forEach(element => {
+        Object.values(screens)
+            .forEach(element => {
 
-            element.classList.remove(
-                "active"
+                if (!element) return;
+
+                element.classList.remove(
+                    "active"
+                );
+
+            });
+
+        if (screen) screen.classList.add("active");
+    }
+
+
+    // بداية الرحلة
+
+    const startBtn = document.getElementById("startBtn");
+    if (startBtn) {
+        startBtn.addEventListener(
+            "click",
+            startJourney
+        );
+    }
+
+
+    function startJourney() {
+
+        showScreen(
+            screens.countdown
+        );
+
+        const counter =
+            document.getElementById(
+                "counter"
+            );
+
+        const counterText =
+            document.getElementById(
+                "counterText"
+            );
+
+        let number = 3;
+
+        if (counter) counter.textContent =
+            "03";
+
+        if (counterText) counterText.textContent =
+            "استعد...";
+
+        const timer =
+            setInterval(() => {
+
+                number--;
+
+                if (number > 0) {
+
+                    if (counter) counter.textContent =
+                        "0" + number;
+
+                    if (counterText) counterText.textContent =
+                        number === 2
+                            ? "الزمن بيتحرك..."
+                            : "اقتربنا...";
+
+                }
+
+                else {
+
+                    clearInterval(timer);
+
+                    if (counter) counter.textContent =
+                        "00";
+
+                    if (counterText) counterText.textContent =
+                        "وصلنا!";
+
+                    setTimeout(() => {
+
+                        showScreen(
+                            screens.moment
+                        );
+
+                    }, 900);
+
+                }
+
+            }, 1000);
+
+    }
+
+
+    // استمرار الرحلة
+
+    const continueBtn = document.getElementById("continueBtn");
+    if (continueBtn) {
+        continueBtn.addEventListener(
+            "click",
+            () => {
+
+                showScreen(
+                    screens.journey
+                );
+
+            }
+        );
+    }
+
+
+    // كروت الزمن
+
+    document
+        .querySelectorAll(".time-card")
+        .forEach(card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    card.style.transform =
+                        "scale(.95)";
+
+                    setTimeout(() => {
+
+                        card.style.transform =
+                            "";
+
+                    }, 150);
+
+                }
             );
 
         });
 
-    screen.classList.add("active");
-}
 
+    // الوصول للكيكة
 
-// بداية الرحلة
-
-document
-    .getElementById("startBtn")
-    .addEventListener(
-        "click",
-        startJourney
-    );
-
-
-function startJourney() {
-
-    showScreen(
-        screens.countdown
-    );
-
-    const counter =
-        document.getElementById(
-            "counter"
-        );
-
-    const counterText =
-        document.getElementById(
-            "counterText"
-        );
-
-    let number = 3;
-
-    counter.textContent =
-        "03";
-
-    counterText.textContent =
-        "استعد...";
-
-    const timer =
-        setInterval(() => {
-
-            number--;
-
-            if (number > 0) {
-
-                counter.textContent =
-                    "0" + number;
-
-                counterText.textContent =
-                    number === 2
-                        ? "الزمن بيتحرك..."
-                        : "اقتربنا...";
-
-            }
-
-            else {
-
-                clearInterval(timer);
-
-                counter.textContent =
-                    "00";
-
-                counterText.textContent =
-                    "وصلنا!";
-
-                setTimeout(() => {
-
-                    showScreen(
-                        screens.moment
-                    );
-
-                }, 900);
-
-            }
-
-        }, 1000);
-
-}
-
-
-// استمرار الرحلة
-
-document
-    .getElementById("continueBtn")
-    .addEventListener(
-        "click",
-        () => {
-
-            showScreen(
-                screens.journey
-            );
-
-        }
-    );
-
-
-// كروت الزمن
-
-document
-    .querySelectorAll(".time-card")
-    .forEach(card => {
-
-        card.addEventListener(
+    const cakeBtn = document.getElementById("cakeBtn");
+    if (cakeBtn) {
+        cakeBtn.addEventListener(
             "click",
             () => {
 
-                card.style.transform =
-                    "scale(.95)";
+                showScreen(
+                    screens.cake
+                );
 
-                setTimeout(() => {
+            }
+        );
+    }
 
-                    card.style.transform =
-                        "";
 
-                }, 150);
+    // الشموع
+
+    const candles =
+        document.querySelectorAll(
+            ".candle"
+        );
+
+    let candlesOff = 0;
+
+
+    candles.forEach(candle => {
+
+        candle.addEventListener(
+            "click",
+            () => {
+
+                if (!candle) return;
+
+                if (
+                    candle.classList.contains(
+                        "off"
+                    )
+                ) {
+                    return;
+                }
+
+                candle.classList.add(
+                    "off"
+                );
+
+                candlesOff++;
+
+                const remaining =
+                    3 - candlesOff;
+
+                const counter =
+                    document.getElementById(
+                        "candleCounter"
+                    );
+
+                if (counter) {
+                    if (remaining > 0) {
+
+                        counter.textContent =
+                            `${remaining} شمعة لسه منورة`;
+
+                    }
+
+                    else {
+
+                        counter.textContent =
+                            "✨ الأمنية اتحققت ✨";
+
+                        const blowText = document.getElementById(
+                            "blowText"
+                        );
+                        if (blowText) blowText.textContent =
+                            "✨ الزمن وقف هنا ✨";
+
+                        createConfetti();
+
+                        setTimeout(() => {
+
+                            showScreen(
+                                screens.final
+                            );
+
+                            createConfetti();
+
+                        }, 1800);
+
+                    }
+                }
 
             }
         );
@@ -166,207 +269,125 @@ document
     });
 
 
-// الوصول للكيكة
+    // الكونفيتي
 
-document
-    .getElementById("cakeBtn")
-    .addEventListener(
-        "click",
-        () => {
+    function createConfetti() {
 
-            showScreen(
-                screens.cake
+        const container =
+            document.getElementById(
+                "confetti"
             );
 
-        }
-    );
+        if (!container) return;
 
+        for (
+            let i = 0;
+            i < 80;
+            i++
+        ) {
 
-// الشموع
-
-const candles =
-    document.querySelectorAll(
-        ".candle"
-    );
-
-let candlesOff = 0;
-
-
-candles.forEach(candle => {
-
-    candle.addEventListener(
-        "click",
-        () => {
-
-            if (
-                candle.classList.contains(
-                    "off"
-                )
-            ) {
-                return;
-            }
-
-            candle.classList.add(
-                "off"
-            );
-
-            candlesOff++;
-
-            const remaining =
-                3 - candlesOff;
-
-            const counter =
-                document.getElementById(
-                    "candleCounter"
+            const piece =
+                document.createElement(
+                    "span"
                 );
 
-            if (remaining > 0) {
+            piece.textContent =
+                Math.random() > .5
+                    ? "❤️"
+                    : "✦";
 
-                counter.textContent =
-                    `${remaining} شمعة لسه منورة`;
+            piece.style.position =
+                "fixed";
 
-            }
+            piece.style.left =
+                Math.random() * 100 +
+                "vw";
 
-            else {
+            piece.style.top =
+                "-20px";
 
-                counter.textContent =
-                    "✨ الأمنية اتحققت ✨";
+            piece.style.fontSize =
+                10 +
+                Math.random() * 20 +
+                "px";
 
-                document.getElementById(
-                    "blowText"
-                ).textContent =
-                    "✨ الزمن وقف هنا ✨";
+            piece.style.zIndex =
+                "999";
 
-                createConfetti();
+            piece.style.transition =
+                "transform 3s ease, opacity 3s ease";
 
-                setTimeout(() => {
-
-                    showScreen(
-                        screens.final
-                    );
-
-                    createConfetti();
-
-                }, 1800);
-
-            }
-
-        }
-    );
-
-});
-
-
-// الكونفيتي
-
-function createConfetti() {
-
-    const container =
-        document.getElementById(
-            "confetti"
-        );
-
-    for (
-        let i = 0;
-        i < 80;
-        i++
-    ) {
-
-        const piece =
-            document.createElement(
-                "span"
+            container.appendChild(
+                piece
             );
 
-        piece.textContent =
-            Math.random() > .5
-                ? "❤️"
-                : "✦";
+            setTimeout(() => {
 
-        piece.style.position =
-            "fixed";
+                piece.style.transform =
+                    `translateY(${window.innerHeight + 100}px)
+                    rotate(${Math.random() * 720}deg)`;
 
-        piece.style.left =
-            Math.random() * 100 +
-            "vw";
+                piece.style.opacity =
+                    "0";
 
-        piece.style.top =
-            "-20px";
+            }, 50);
 
-        piece.style.fontSize =
-            10 +
-            Math.random() * 20 +
-            "px";
+            setTimeout(() => {
 
-        piece.style.zIndex =
-            "999";
+                piece.remove();
 
-        piece.style.transition =
-            "transform 3s ease, opacity 3s ease";
+            }, 3200);
 
-        container.appendChild(
-            piece
+        }
+
+    }
+
+
+    // إعادة التجربة
+
+    const restartBtn = document.getElementById("restartBtn");
+    if (restartBtn) {
+        restartBtn.addEventListener(
+            "click",
+            () => {
+
+                location.reload();
+
+            }
         );
+    }
 
-        setTimeout(() => {
+    const nextPageBtn = document.getElementById("nextPageBtn");
+    if (nextPageBtn) {
+        nextPageBtn.addEventListener("click", () => {
 
-            piece.style.transform =
-                `translateY(${
-                    window.innerHeight + 100
-                }px)
-                rotate(${
-                    Math.random() * 720
-                }deg)`;
+            const transition =
+                document.createElement("div");
 
-            piece.style.opacity =
-                "0";
+            transition.className =
+                "page-transition";
 
-        }, 50);
+            document.body.appendChild(
+                transition
+            );
 
-        setTimeout(() => {
+            requestAnimationFrame(() => {
+                transition.classList.add("active");
+            });
 
-            piece.remove();
+            setTimeout(() => {
 
-        }, 3200);
+                window.location.href =
+                    "love.html";
 
+            }, 550);
+        });
     }
 
 }
 
-
-// إعادة التجربة
-
-document
-    .getElementById("restartBtn")
-    .addEventListener(
-        "click",
-        () => {
-
-            location.reload();
-
-        }
-    );
-    document
-    .getElementById("nextPageBtn")
-    .addEventListener("click", () => {
-
-        const transition =
-            document.createElement("div");
-
-        transition.className =
-            "page-transition";
-
-        document.body.appendChild(
-            transition
-        );
-
-        requestAnimationFrame(() => {
-            transition.classList.add("active");
-        });
-
-        setTimeout(() => {
-
-            window.location.href =
-                "love.html";
-
-        }, 550);
-    });
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+} else {
+    initGallery();
+}
