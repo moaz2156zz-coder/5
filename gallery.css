@@ -213,8 +213,7 @@ button {
     box-shadow:
         0 0 20px rgba(255, 30, 110, .35);
 
-    transition:
-        .3s;
+  transition: all .3s;
 }
 
 
@@ -680,7 +679,6 @@ button:hover {
 
 }
 /* شاشة الانتقال */
-
 .page-transition {
     position: fixed;
     inset: 0;
@@ -717,7 +715,7 @@ button:hover {
     100% {
         transform: scaleY(0);
         transform-origin: top;
-    }
+ }
 }
 #nextPageBtn {
     margin-top: 12px;
@@ -725,7 +723,6 @@ button:hover {
     border: 1px solid #ff4f91;
     box-shadow: 0 0 15px rgba(255, 79, 145, .25);
 }
-
 #nextPageBtn:hover {
     background: #ff4f91;
     box-shadow: 0 0 30px rgba(255, 79, 145, .6);
