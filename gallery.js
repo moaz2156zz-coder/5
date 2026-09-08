@@ -1,4 +1,3 @@
-```javascript
 /* =========================
    GALLERY / TIME MACHINE
 ========================= */
@@ -158,7 +157,7 @@ startButton.onclick = () => {
 
 function showMemory() {
 
- if (memoryIndex >= memories.length) {
+    if (memoryIndex >= memories.length) {
 
         memoryNumber.textContent = "∞";
 
@@ -202,19 +201,18 @@ function showMemory() {
     createExplosion();
 
     memoryIndex++;
-========================= */
 
-function createExplosion() {
+    setTimeout(() => {
 
-    const symbols = [
-        "✦",
-        "✧",
-        "✨",
-        "·",
-        "♡"
-    ];
+        showMemory();
+
+    }, 2300);
+
+}
 
 
+/* =========================
+   PARTICLE EXPLOSION
     for (let i = 0; i < 18; i++) {
 
         const particle =
@@ -338,4 +336,3 @@ style.textContent = `
 }`;
 
 document.head.appendChild(style);
-```
