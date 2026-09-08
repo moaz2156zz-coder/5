@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         heart.style.animationDuration =
             Math.random() * 5 + 6 + "s";
-
         hearts.appendChild(heart);
 
         setTimeout(function () {
@@ -65,8 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     setInterval(createHeart, 500);
-
-
     // =========================
     // زر الانتقال
     // =========================
