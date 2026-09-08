@@ -1,18 +1,27 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>LOVE ♡</title>
-    <link rel="stylesheet" href="love.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./love.css">
 </head>
+
 <body>
-    <!-- خلفية متحركة -->
+
+    <!-- الخلفية -->
     <div class="background">
         <div class="glow glow1"></div>
         <div class="glow glow2"></div>
         <div class="stars"></div>
     </div>
+
+
     <!-- شاشة البداية -->
     <section class="intro" id="intro">
 
@@ -23,16 +32,23 @@
             <p class="intro-small">
                 A SPECIAL MEMORY
             </p>
+
             <h1>FORYOU</h1>
+
             <p class="intro-text">
                 يمكن حاجة حلوة بس انت احلى
             </p>
+
             <button id="openBtn">
                 افتحي يامظة
                 <span>♡</span>
             </button>
+
         </div>
+
     </section>
+
+
     <main>
 
         <!-- الهيدر -->
@@ -68,7 +84,9 @@
 
                     <span>NOW PLAYING</span>
 
-                    <h3>انا عندي لعنيكي كلام</h3>
+                    <h3>
+                        انا عندي لعنيكي كلام
+                    </h3>
 
                     <p>
                         شغلي
@@ -86,7 +104,8 @@
 
             </div>
 
-            <audio id="song" src="/music/esmy.mp3"></audio>
+            <!-- مهم: استخدم ./ بدل / -->
+            <audio id="song" src="./music/esmy.mp3"></audio>
 
         </section>
 
@@ -98,105 +117,138 @@
 
             <p>
                 "أجمل الذكريات مش اللي بنخطط لها،
-                 هي اللي بتيجي فجأة وتفضل في القلب بحبك."
+                هي اللي بتيجي فجأة وتفضل في القلب بحبك."
             </p>
 
         </section>
+
+
         <!-- معرض الصور -->
         <section class="gallery">
 
             <div class="section-title">
+
                 <span>MEMORIES</span>
 
                 <h3>
-                   😋جييبي بوثة
+                    😋 جييبي بوثة
                 </h3>
+
             </div>
+
+
             <div class="photos">
 
+
                 <div class="photo photo1">
-                    <img src="/images/love1.jpg" alt="Memory 1">
+
+                    <img src="./images/love1.jpg" alt="Memory 1">
 
                     <div class="photo-caption">
                         بحبك بطريقة تخلي الكلام قليل مهما حاولت أوصف اللي جوايا.
                     </div>
+
                 </div>
 
+
                 <div class="photo photo2">
-                    <img src="/images/love2.jpg" alt="Memory 2">
+
+                    <img src="./images/love2.jpg" alt="Memory 2">
 
                     <div class="photo-caption">
                         لو كان ليا أمنية واحدة، هتكون إني أفضل أشوف ضحكتك طول عمري
                     </div>
+
                 </div>
+
+
                 <div class="photo photo3">
-                    <img src="/images/love3.jpg" alt="Memory 3">
+
+                    <img src="./images/love3.jpg" alt="Memory 3">
 
                     <div class="photo-caption">
                         وجودك في حياتي خلّى لكل يوم معنى، ولكل لحظة طعم مختلف.
                     </div>
+
                 </div>
 
 
                 <div class="photo photo4">
-                    <img src="/images/love4.jpg" alt="Memory 4">
+
+                    <img src="./images/love4.jpg" alt="Memory 4">
 
                     <div class="photo-caption">
                         إنتِ مش بس حبيبتي، إنتِ أجمل حاجة حصلتلي في الدنيا.
                     </div>
+
                 </div>
+
+
                 <div class="photo photo5">
-                    <img src="/images/love5.jpg" alt="Memory 5">
+
+                    <img src="./images/love5.jpg" alt="Memory 5">
 
                     <div class="photo-caption">
-                        مهما بعتي هتفضلي في قلبي  
-
+                        مهما بعتي هتفضلي في قلبي
                     </div>
+
                 </div>
-                
+
+
                 <div class="photo photo6">
-                    <img src="/images/love6.jpg" alt="Memory 6">
+
+                    <img src="./images/love6.jpg" alt="Memory 6">
 
                     <div class="photo-caption">
-                        لو خيروني الف مرة.....هختارك انت كل مرة 
-
+                        لو خيروني الف مرة.....هختارك انت كل مرة
                     </div>
+
                 </div>
+
 
                 <div class="photo photo7">
-                    <img src="/images/love7.jpg" alt="Memory 7">
+
+                    <img src="./images/love7.jpg" alt="Memory 7">
 
                     <div class="photo-caption">
-                        لو الكل عندو قمر فنا عندي كوكب 😋 
-
+                        لو الكل عندو قمر فنا عندي كوكب 😋
                     </div>
+
                 </div>
+
 
                 <div class="photo photo8">
-                    <img src="/images/love8.jpg" alt="Memory 8">
+
+                    <img src="./images/love8.jpg" alt="Memory 8">
 
                     <div class="photo-caption">
-                        لو الكل اختارني هختارك انتي 
-
+                        لو الكل اختارني هختارك انتي
                     </div>
+
                 </div>
-                
+
+
                 <div class="photo photo9">
-                    <img src="/images/love9.jpg" alt="Memory 9">
+
+                    <img src="./images/love9.jpg" alt="Memory 9">
 
                     <div class="photo-caption">
-                        لو كلو حبني هحبك انت  
-
+                        لو كلو حبني هحبك انت
                     </div>
+
                 </div>
+
 
                 <div class="photo photo10">
-                    <img src="/images/love10.jpg" alt="Memory 10">
+
+                    <img src="./images/love10.jpg" alt="Memory 10">
 
                     <div class="photo-caption">
                         لو كلو عندوا نجوموا فنا عندي قمري
                     </div>
+
                 </div>
+
 
             </div>
 
@@ -211,7 +263,7 @@
             <h3>
                 مش مهم كام يوم عدى...
                 <br>
-                المهم ان انت معايا 
+                المهم ان انت معايا
             </h3>
 
             <div class="quote-heart">
@@ -226,14 +278,18 @@
 
             <div class="message-card">
 
-                <div class="envelope">✉</div>
+                <div class="envelope">
+                    ✉
+                </div>
 
                 <h3>
                     رسالة صغيرة
                 </h3>
+
                 <p>
-                    كان لازم اقابلك من زمان        
+                    كان لازم اقابلك من زمان
                 </p>
+
                 <strong>
                     "اللحظة دي كانت تستاهل تتخزن." ❤️
                 </strong>
@@ -243,16 +299,14 @@
         </section>
 
 
-        <!-- النهاية -->
-        
-        
         <!-- الانتقال للصفحة التالية -->
-
         <section class="next-page">
 
             <div class="next-content">
 
-                <span>✦ NEXT MEMORY ✦</span>
+                <span>
+                    ✦ NEXT MEMORY ✦
+                </span>
 
                 <h3>
                     لسه في حكاية تانية...
@@ -270,11 +324,14 @@
             </div>
 
         </section>
-        
-        
+
+
+        <!-- النهاية -->
         <footer>
 
-            <h2>LOVE</h2>
+            <h2>
+                LOVE
+            </h2>
 
             <p>
                 Made with ♡ for a beautiful memory
@@ -285,18 +342,22 @@
     </main>
 
 
-    <!-- عارض الصورة -->
+    <!-- عارض الصور -->
     <div class="lightbox" id="lightbox">
 
-        <button id="closeLightbox">×</button>
+        <button id="closeLightbox">
+            ×
+        </button>
 
         <img id="lightboxImg" src="" alt="">
 
     </div>
 
 
-    <script src="love.js"></script>
+    <!-- JavaScript -->
+    <script src="./love.js"></script>
 
 </body>
 
 </html>
+```
