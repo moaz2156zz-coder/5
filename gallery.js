@@ -1,110 +1,96 @@
-/* =========================
-   الكتابة حرف حرف
-========================= */
+const message = `النهارده مش يوم عادي.. ❤️
 
-const text = `
-النهارده مش يوم عادي.. ❤️
-النهارده اليوم اللي اتولدت فيه أجمل إنسانة بالنسبة ليا.
+النهارده يوم ميلاد أجمل جنجونتي.
 
-كل سنة وانتي طيبة يا جنجونتي،
+كل سنة وانتي طيبة،
 وكل سنة وضحكتك منورة الدنيا حواليكي. ✨
 
-أتمنى السنة الجديدة من عمرك تكون مليانة
-فرحة ونجاح وأيام حلوة كتير.
+أتمنى السنة الجديدة من عمرك
+تكون مليانة فرحة وسعادة ونجاح.
 
-وأتمنى دايمًا تفضلي مبسوطة،
-لأن ابتسامتك لوحدها كفاية تخلي اليوم أجمل. ❤️
+وأتمنى دايمًا أشوفك مبسوطة،
+لأن ابتسامتك بتخلي كل حاجة أجمل. ❤️
 
 عيد ميلاد سعيد يا جنجونتي 😍
-وعقبال سنين كتير كلها فرحة وحب. ❤️
-`;
+وعقبال سنين كتير كلها فرحة وحب. ❤️`;
 
-const typingText = document.getElementById("typingText");
+const typing = document.getElementById("typing");
 
-let index = 0;
+let i = 0;
 
 function typeWriter() {
 
-    if (index < text.length) {
+    if (i < message.length) {
 
-        typingText.textContent += text.charAt(index);
+        typing.textContent += message[i];
 
-        index++;
+        i++;
 
         let speed = 35;
 
-        if (text.charAt(index - 1) === "\n") {
-            speed = 300;
+        if (message[i - 1] === "\n") {
+            speed = 250;
         }
 
         setTimeout(typeWriter, speed);
     }
 }
 
-setTimeout(typeWriter, 1200);
+setTimeout(typeWriter, 1000);
 
 
-/* =========================
-   إنشاء القلوب
-========================= */
+/* القلوب */
 
-const heartsContainer = document.querySelector(".hearts");
+const hearts = document.querySelector(".hearts");
 
 function createHeart() {
 
     const heart = document.createElement("div");
 
-    heart.classList.add("heart");
+    heart.className = "heart";
 
-    heart.innerHTML = "♥";
+    heart.textContent = "♥";
 
     const size = Math.random() * 35 + 15;
-
-    const duration = Math.random() * 8 + 8;
-
-    const delay = Math.random() * 8;
-
-    const opacity = Math.random() * .55 + .25;
+    const duration = Math.random() * 7 + 7;
 
     heart.style.left = Math.random() * 100 + "%";
+    heart.style.fontSize = size + "px";
+    heart.style.animationDuration = duration + "s";
+    heart.style.opacity = Math.random() * .6 + .3;
 
-    heart.style.setProperty("--size", size + "px");
-    heart.style.setProperty("--duration", duration + "s");
-    heart.style.setProperty("--delay", delay + "s");
-    heart.style.setProperty("--opacity", opacity);
-
-    heartsContainer.appendChild(heart);
+    hearts.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, (duration + delay) * 1000);
+    }, duration * 1000);
 }
 
-for (let i = 0; i < 30; i++) {
-    createHeart();
+
+/* قلوب البداية */
+
+for (let x = 0; x < 25; x++) {
+
+    setTimeout(createHeart, x * 200);
+
 }
 
 setInterval(createHeart, 500);
 
 
-/* =========================
-   زر الانتقال
-========================= */
+/* زر الانتقال */
 
-function goNext() {
+const next = document.getElementById("next");
+const transition = document.querySelector(".transition");
 
-    const transition = document.querySelector(".transition-screen");
+next.addEventListener("click", () => {
 
     transition.classList.add("active");
 
     setTimeout(() => {
 
-        /*
-          غير اسم الصفحة هنا لو الصفحة التالية
-          عندك باسم مختلف
-        */
+        window.location.href = "gallery2.html";
 
-        window.location.href = "message.html";
+    }, 850);
 
-    }, 900);
-}
+});
