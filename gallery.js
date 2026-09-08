@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             transition.classList.add("active");
             
             setTimeout(function () {
-                window.location.href = "LOVE.html";
+                window.location.href = "/LOVE.html";
             }, 800);
 
         });
