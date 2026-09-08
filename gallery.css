@@ -632,6 +632,7 @@ h1 {
     font-size: 15px;
 
     font-weight: bold;
+    
    cursor: pointer;
 
     background: linear-gradient(
@@ -731,7 +732,6 @@ h1 {
 .next-page-button:active {
 
     transform: translateY(-2px) scale(1.05);
-} 
 }
 
 
@@ -745,6 +745,11 @@ h1 {
 
     .time-machine {
         margin-top: 35px;
-    }
-
 }
+ .next-page-button {
+        margin-top: 40px;
+
+        padding: 12px 25px;
+
+        font-size: 13px;
+    }
