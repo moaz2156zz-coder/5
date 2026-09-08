@@ -25,13 +25,11 @@ const memoryText =
 
 const clockSymbol =
     document.getElementById("clockSymbol");
-
  const nextPageBtn =
     document.getElementById("nextPageBtn");
 /* =========================
    CREATE STARS
 ========================= */
-
 for (let i = 0; i < 130; i++) {
 
     const star =
@@ -173,10 +171,8 @@ function showMemory() {
         createExplosion();
 
  nextPageBtn.style.display = "flex";
-        return;
-    }
+        return; }
     const memory = memories[memoryIndex];
-
     memoryNumber.textContent =
         String(memoryIndex + 1)
         .padStart(2, "0");
