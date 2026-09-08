@@ -393,3 +393,4 @@ if (document.readyState === 'loading') {
 } else {
     initGallery();
 }
+
