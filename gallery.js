@@ -167,7 +167,7 @@ function initGallery() {
                     }, 150);
 
                 }
-            );
+     if (!candle) return;  // هذا الفحص غير ضروري هنا لأننا بالفعل في حلقة forEach
 
         });
 
@@ -248,7 +248,12 @@ function initGallery() {
                         if (blowText) blowText.textContent =
                             "✨ الزمن وقف هنا ✨";
 
-                        createConfetti();
+                      setTimeout(() => {
+    const translateY = window.innerHeight + 100;
+    const rotate = Math.random() * 720;
+    
+    piece.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
+    piece.style.opacity = "0";
 
                         setTimeout(() => {
 
